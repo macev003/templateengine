@@ -9,6 +9,7 @@ const OUTPUT_DIR = path.resolve(__dirname, "output");
 const outputPath = path.join(OUTPUT_DIR, "team.html");
 
 const render = require("./lib/htmlRenderer");
+const { mainModule } = require("process");
 
 const employee = [
     {
@@ -20,22 +21,74 @@ const employee = [
           "engineer",
           "intern",
           "new"
-        ]
+    ]};
+
+function promptUser(){
+  return inquirer.prompt ([
+      {
+        type: "input",
+        message: "Enter manager name",
+        name: "managerName"
       },
       {
         type: "input",
-        message: "",
-        name: ""
+        message: "Enter your id",
+        name: "managerID"
       },
       {
-        type: "list",
-        message: "",
-        name: "",
-        choices: []
+        type: "input",
+        message: "Enter your email",
+        name: "managerEmail"
+      },
+      {
+        type: "input",
+        message: "Enter your office number",
+        name: "managerOfficeNumber"
+      },
+      {
+        type: "input",
+        message: "Enter engineer name",
+        name: "engineerName"
+      },
+      {
+        type: "input",
+        message: "Enter your id",
+        name: "engineerID",
+      },
+      {
+        type: "input",
+        message: "Enter your email?",
+        name: "engineerEmail"
+      },
+      {
+        type: "input",
+        message: "Enter your GitHub username",
+        name: "engineerGitHub"
+      },
+      {
+        type: "input",
+        message: "Enter intern name",
+        name: "internName"
+      },
+      {
+        type: "input",
+        message: "Enter your id",
+        name: "internID"
+      },
+      {
+        type: "input",
+        message: "Enter your email",
+        name: "internEmail"
+      },
+      {
+        type: "input",
+        message: "Enter linkedin profile",
+        name: "internLinkedin"
       },
       
+    ]);
 
-];
+}
 
 // function to write README file
 function writeToFile(fileName, data) {
@@ -47,14 +100,14 @@ function init() {
     inquirer.prompt()
     .then( answers => {
         // Use user feedback for... whatever!!
-        writeToFile("", ({...}))
+        writeToFile("", ({...mainModule.html}))
       })
 
 }
 
 // function call to initialize program
 init();
-]
+
 
 
 // Write code to use inquirer to gather information about the development team members,
