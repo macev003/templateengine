@@ -11,20 +11,19 @@ const outputPath = path.join(OUTPUT_DIR, "team.html");
 const render = require("./lib/htmlRenderer");
 const { mainModule } = require("process");
 
-const employee = [
-    {
-        type: "input",
-        message: "What is your position?",
-        name: "employee type",
-        choices: [
-          "manager",
-          "engineer",
-          "intern",
-          "new"
-    ]};
+// const employee = [
+//     {
+//         type: "input",
+//         message: "Select Employee Position",
+//         name: "employee type",
+//         choices: [
+//           "manager",
+//           "engineer",
+//           "intern",
+//           "new"
+//     ]},
 
-function promptUser(){
-  return inquirer.prompt ([
+ inquirer.prompt ([
       {
         type: "input",
         message: "Enter manager name",
@@ -84,11 +83,19 @@ function promptUser(){
         type: "input",
         message: "Enter linkedin profile",
         name: "internLinkedin"
-      },
+      }
       
-    ]);
+    ])
+    .then(function(response) {
+      if (response.confirm === response.choices) {
+        console.log("Choice Selected");
+      }
+      else {
+        console.log("No selection has been made");
+      }
+    });
 
-}
+
 
 // function to write README file
 function writeToFile(fileName, data) {
@@ -100,7 +107,7 @@ function init() {
     inquirer.prompt()
     .then( answers => {
         // Use user feedback for... whatever!!
-        writeToFile("", ({...mainModule.html}))
+        writeToFile("team.html", ({...mainModule.html}))
       })
 
 }
