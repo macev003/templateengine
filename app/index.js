@@ -10,6 +10,52 @@ const outputPath = path.join(OUTPUT_DIR, "team.html");
 
 const render = require("./lib/htmlRenderer");
 
+const employee = [
+    {
+        type: "input",
+        message: "What is your position?",
+        name: "employee type",
+        choices: [
+          "manager",
+          "engineer",
+          "intern",
+          "new"
+        ]
+      },
+      {
+        type: "input",
+        message: "",
+        name: ""
+      },
+      {
+        type: "list",
+        message: "",
+        name: "",
+        choices: []
+      },
+      
+
+];
+
+// function to write README file
+function writeToFile(fileName, data) {
+    return fs.writeFileSync(path.join(process.cwd(),fileName),data);
+}
+
+// function to initialize program
+function init() {
+    inquirer.prompt()
+    .then( answers => {
+        // Use user feedback for... whatever!!
+        writeToFile("", ({...}))
+      })
+
+}
+
+// function call to initialize program
+init();
+]
+
 
 // Write code to use inquirer to gather information about the development team members,
 // and to create objects for each team member (using the correct classes as blueprints!)
